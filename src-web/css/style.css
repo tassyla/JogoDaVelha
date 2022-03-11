@@ -172,10 +172,10 @@ header h1{
     color: #ffffff;
     background-color: #512d6dde;
     border: none;
-    transition: background-color .5s;
+    transition: background-color .3s;
 }
 
 #game-end-message button:hover{
-    background-color: #e31d79bd;
+    background-color: #01b3bc;
     cursor: pointer;
 }
