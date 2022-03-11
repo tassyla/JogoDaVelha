@@ -1,0 +1,181 @@
+/* Configurações básicas da página */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilização do fundo */
+body{
+    height: 100vh;
+    width: 100vh;
+    background-image: linear-gradient(135deg, #e31d7b99, #512d6d99, #01b3bc99);
+    /* animation: spin-background .5s linear infinite alternate-reverse; */
+}
+
+/* @keyframes spin-background {
+    0% { background-image: linear-gradient(130deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    10% { background-image: linear-gradient(135deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    20% { background-image: linear-gradient(140deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    30% { background-image: linear-gradient(145deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    40% { background-image: linear-gradient(150deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    50% { background-image: linear-gradient(155deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    60% { background-image: linear-gradient(160deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    70% { background-image: linear-gradient(165deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    80% { background-image: linear-gradient(170deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    90% { background-image: linear-gradient(175deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+    100% { background-image: linear-gradient(180deg, #e31d7b99, #512d6d99, #01b3bc99, #e31d7b99); }
+} */
+
+/* Cabeçalho */
+header h1{
+    font-family: 'Berkshire Swash', cursive;
+    color: #ffffff;
+    font-size: 400%;
+    text-align: center;
+    margin: 100px 0px;
+    animation: pop-title 1s infinite alternate;
+}
+
+@keyframes pop-title{
+    from{
+        letter-spacing: 1px;
+    }
+    to{
+        letter-spacing: 10px;
+    }
+}
+
+/* Configuração do tabuleiro de jogo */
+#board{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffffffe0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cell.x,
+.cell.circle{
+    cursor: not-allowed;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+    border-bottom: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+    border-left: none;
+}
+
+/* Configuração do X */
+
+.cell.x::before,
+.cell.x::after,
+#board.x .cell:not(.x):not(.circle):hover::before,
+#board.x .cell:not(.x):not(.circle):hover::after{
+    content: "";
+    height: calc(100px * 0.08);
+    width: calc(100px * 0.9);
+    background-color: #ffffff;
+    position: absolute;
+}
+
+.cell.x::before,
+#board.x .cell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+#board.x .cell:not(.x):not(.circle):hover::after{
+    transform: rotate(-45deg);
+}
+
+/* Estilização X */
+
+#board.x .cell:not(.x):not(.circle):hover::before,
+#board.x .cell:not(.x):not(.circle):hover::after{
+    background-color: #ffffff6f;
+}
+
+/* Configurando círculo */
+
+.cell.circle::before,
+.cell.circle::after,
+#board.circle .cell:not(.x):not(.circle):hover::before,
+#board.circle .cell:not(.x):not(.circle):hover::after{
+    content: "";
+    height: calc(100px * 0.6);
+    width: calc(100px * 0.6);
+    border-radius: 50%;
+    border: 7px solid #ffffff;
+    background-color: #ffffff00;
+    position: absolute;
+}
+
+.cell.circle::before,
+#board.circle .cell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg);
+}
+
+.cell.circle::after,
+#board.circle .cell:not(.x):not(.circle):hover::after{
+    transform: rotate(-45deg);
+}
+
+/* Estilização círculo */
+#board.circle .cell:not(.x):not(.circle):hover::before,
+#board.circle .cell:not(.x):not(.circle):hover::after{
+    border: 7px solid #ffffff3f;
+}
+
+/* Mensagem de fim de jogo */
+#game-end-message {
+    text-align: center;
+    margin: 50px;
+}
+
+#game-end-message button{
+    padding: 20px;
+    font-size: 150%;
+    border-radius: 15px;
+    margin: 50px 0px;
+    color: #ffffff;
+    background-color: #512d6dde;
+    border: none;
+    transition: background-color .5s;
+}
+
+#game-end-message button:hover{
+    background-color: #e31d79bd;
+    cursor: pointer;
+}
